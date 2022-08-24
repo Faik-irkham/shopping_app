@@ -38,14 +38,34 @@ class Products with ChangeNotifier {
     ),
   ];
 
+  // var _showFavoriteOnly = false;
+
   List<Product> get items {
     // ignore: sdk_version_ui_as_code
+    // if (_showFavoriteOnly) {
+    //   return _items.where((prodItem) => prodItem.isFavorite).toList();
+    // }
+    // ignore: sdk_version_ui_as_code
     return [..._items];
+  }
+
+  List<Product> get favoriteItems {
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
+
+  // void showFavoriteOnly() {
+  //   _showFavoriteOnly = true;
+  //   notifyListeners();
+  // }
+
+  // void showAll() {
+  //   _showFavoriteOnly = false;
+  //   notifyListeners();
+  // }
 
   void addProduct() {
     // _items.add(value);
