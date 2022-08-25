@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/products.dart';
@@ -34,7 +35,13 @@ class ProductDetailScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              '\Rp. ${loadedproduct.price}',
+              NumberFormat.currency(
+                locale: 'id',
+                symbol: 'Rp. ',
+                decimalDigits: 0,
+              ).format(
+                loadedproduct.price,
+              ),
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 20,

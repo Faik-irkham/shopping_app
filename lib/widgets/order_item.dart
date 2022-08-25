@@ -23,7 +23,13 @@ class _OrderItemState extends State<OrderItem> {
       child: Column(
         children: [
           ListTile(
-            title: Text('\Rp. ${widget.order.amount}'),
+            title: Text(
+              NumberFormat.currency(
+                locale: 'id',
+                symbol: 'Rp. ',
+                decimalDigits: 0,
+              ).format(widget.order.amount),
+            ),
             subtitle: Text(
               DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
             ),
@@ -36,6 +42,7 @@ class _OrderItemState extends State<OrderItem> {
               },
             ),
           ),
+          // ignore: sdk_version_ui_as_code
           if (_expanded)
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
@@ -53,7 +60,11 @@ class _OrderItemState extends State<OrderItem> {
                               ),
                             ),
                             Text(
-                              '${prod.quantity}x \Rp. ${prod.price}',
+                              NumberFormat.currency(
+                                locale: 'id',
+                                symbol: 'Rp. ',
+                                decimalDigits: 0,
+                              ).format(prod.price),
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.grey,

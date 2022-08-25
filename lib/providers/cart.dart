@@ -4,7 +4,7 @@ class CartItem {
   final String id;
   final String title;
   final int quantity;
-  final double price;
+  final int price;
 
   CartItem({
     @required this.id,
@@ -18,6 +18,7 @@ class Cart with ChangeNotifier {
   Map<String, CartItem> _items = {};
 
   Map<String, CartItem> items() {
+    // ignore: sdk_version_ui_as_code
     return {..._items};
   }
 
@@ -25,8 +26,8 @@ class Cart with ChangeNotifier {
     return _items.length;
   }
 
-  double get totalAmount {
-    var total = 0.0;
+  int get totalAmount {
+    var total = 0;
     _items.forEach((key, cartItem) {
       total += cartItem.price * cartItem.quantity;
     });
@@ -35,7 +36,7 @@ class Cart with ChangeNotifier {
 
   void addItem(
     String productId,
-    double price,
+    int price,
     String title,
   ) {
     if (_items.containsKey(productId)) {

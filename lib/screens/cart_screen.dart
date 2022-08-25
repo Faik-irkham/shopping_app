@@ -1,4 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/cart.dart' show Cart;
@@ -33,7 +36,13 @@ class CartScreen extends StatelessWidget {
                   Chip(
                     backgroundColor: Colors.white,
                     label: Text(
-                      'Rp. ${cart.totalAmount.toStringAsFixed(2)}',
+                      // ignore: sdk_version_set_literal
+                      NumberFormat.currency(
+                        locale: 'id',
+                        symbol: 'Rp. ',
+                        decimalDigits: 0,
+                      ).format(cart.totalAmount),
+
                       style: TextStyle(
                         color: Colors.black,
                       ),

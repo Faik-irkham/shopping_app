@@ -8,6 +8,7 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Color.fromARGB(255, 235, 247, 255),
       child: Column(
         children: [
           AppBar(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/cart.dart';
@@ -6,7 +7,7 @@ import '../providers/cart.dart';
 class CartItem extends StatelessWidget {
   final String id;
   final String productId;
-  final double price;
+  final int price;
   final int quantity;
   final String title;
 
@@ -52,7 +53,13 @@ class CartItem extends StatelessWidget {
               child: FittedBox(child: Text('\Rp. $price')),
             ),
             title: Text(title),
-            subtitle: Text('Total: \Rp. ${(price * quantity)}'),
+            subtitle: Text(
+              NumberFormat.currency(
+                locale: 'id',
+                symbol: 'Rp. ',
+                decimalDigits: 0,
+              ).format(price * quantity),
+            ),
             trailing: Text('$quantity x'),
           ),
         ),
