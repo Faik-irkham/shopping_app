@@ -47,12 +47,14 @@ class CartItem extends StatelessWidget {
               'Do you want remove the item from the cart',
             ),
             actions: [
+              // ignore: deprecated_member_use
               FlatButton(
                 child: Text('No'),
                 onPressed: () {
                   Navigator.of(ctx).pop(false);
                 },
               ),
+              // ignore: deprecated_member_use
               FlatButton(
                 child: Text('Yes'),
                 onPressed: () {
