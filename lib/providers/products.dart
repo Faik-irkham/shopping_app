@@ -70,11 +70,11 @@ class Products with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  void addProduct(Product product) {
+  Future<void> addProduct(Product product) {
     // ignore: unused_local_variable
     const url =
         'https://shop-app-2b76a-default-rtdb.asia-southeast1.firebasedatabase.app/products.json';
-    http
+    return http
         .post(
       url,
       body: json.encode({
