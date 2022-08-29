@@ -43,6 +43,9 @@ class Products with ChangeNotifier {
   ];
 
   // var _showFavoriteOnly = false;
+  final String authToken;
+
+  Products(this.authToken, this._items);
 
   List<Product> get items {
     // ignore: sdk_version_ui_as_code
@@ -71,8 +74,8 @@ class Products with ChangeNotifier {
   //   notifyListeners();
   // }
   Future<void> fetchAndSetProducts() async {
-    const url =
-        'https://shop-app-2b76a-default-rtdb.asia-southeast1.firebasedatabase.app/products.json';
+    final url =
+        'https://shop-app-2b76a-default-rtdb.asia-southeast1.firebasedatabase.app/products.json?auth=$authToken';
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
