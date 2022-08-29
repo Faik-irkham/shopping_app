@@ -107,6 +107,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
             title: Text('An error occured!'),
             content: Text('Something went wrong!'),
             actions: [
+              // ignore: deprecated_member_use
               FlatButton(
                 child: Text('Okay'),
                 onPressed: () {
