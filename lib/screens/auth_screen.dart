@@ -1,6 +1,4 @@
-// ignore_for_file: deprecated_member_use, sdk_version_ui_as_code
-
-import 'dart:math';
+// ignore_for_file: deprecated_member_use, sdk_version_ui_as_code, missing_return
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -118,6 +116,7 @@ class _AuthCardState extends State<AuthCard>
 
   @override
   void dispose() {
+    // ignore: todo
     // TODO: implement dispose
     super.dispose();
     _controller.dispose();
