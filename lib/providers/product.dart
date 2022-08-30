@@ -25,24 +25,24 @@ class Product with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> toogleFavoriteStatus() async {
+  Future<void> toogleFavoriteStatus(String token, userId) async {
     final oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
     final url =
-        'https://shop-app-2b76a-default-rtdb.asia-southeast1.firebasedatabase.app/$id.json';
+        'https://shop-app-2b76a-default-rtdb.asia-southeast1.firebasedatabase.app/userFavorites/$userId/$id.json?auth=$token';
     try {
-      final response = await http.patch(
+      final response = await http.put(
         url,
-        body: json.encode({
-          'isFavorite': isFavorite,
-        }),
+        body: json.encode(
+          isFavorite,
+        ),
       );
       if (response.statusCode >= 400) {
         _setFavValue(oldStatus);
       }
     } catch (error) {
-      isFavorite = oldStatus;
+      _setFavValue(oldStatus);
     }
   }
 }
